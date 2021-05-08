@@ -1,0 +1,55 @@
+Here main observation is:
+  
+Total number of 1 digit numbers is = (9-1)+1=9 and they occupy 9 digits 
+Total number of 2 digit numbers is = (99-10)=90 and they occupy (90*2) digits 
+Total number of 2 digit numbers is = (999-100)=900 and they occupy (900*3) digits 
+Total number of 2 digit numbers is = (9999-1000)=9000 and they occupy (9000*4) digits 
+and so on.
+
+
+Now , the highest value of k is 10^18
+It means we have to find the 10^18th digit in the string
+
+
+If we sum up the total digits for 1 digit numbers, 2 digit numbers and further, highest we will need
+up to 17 digit number..as the total 17 digit numbers is 17* 10^16.. which will not exceed long long.
+Its simple mathematical calculation
+
+1. So we can precalculate an array, where we will store for every i from 1 to 17, how many i digits number are there
+   as we can see from the above 4 calculations
+
+2. Then for each k in query, we can find the upper_bound of k from the array.. It means we can find in which digit index
+   index our kth position lies
+
+3. We can simply substract array values from k from the beginning and stop when the remaining k value is 
+   less than the next array value.
+4. The stopping index will indicate the digits of each numbers of the indexed range of the array
+
+5. Then we will find the first number that starts with the index times digits
+
+6. Then we will just find the number in which the kth position lies by just dividing the remaining value
+   of k by current index as current index denotes the digits
+
+7. Then we will take the rounded down value of the division.
+
+8. Also we will calculate the remainder if k is not completely divided by index
+
+9. Then add this division value with the value calculated in step 5.
+10. Now we have the number at which the k position may( or may not ) lie
+
+10. If the remainder is 0, the the last digit of this number is answer
+
+11. If there is remainder.. then the answer lies in the next number. So add 1 to this number
+
+12. Now get the remainder(th) digit from the number..( counting start from the left )
+  
+   ( suppose the remainder is 4..so start counting from the leftmost digit of the number and
+     pick the 4th digit of the number. This is the answer )
+
+
+
+                   
+
+
+ 
+ 
